@@ -1,0 +1,11 @@
+{
+	"name": "ls_staynest_storage",
+	"properties": {
+		"description": "Connection to StayNest raw and bronze storage",
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://saiteja23199602.dfs.core.windows.net/"
+		}
+	}
+}
