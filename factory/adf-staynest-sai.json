@@ -1,0 +1,15 @@
+{
+	"name": "adf-staynest-sai",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "australiasoutheast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9398ac23-3582-4c3d-bae5-5ccf54e8be0c",
+		"tenantId": "5da8e190-2b50-4fb3-9615-e518da363e25"
+	}
+}
