@@ -1,7 +1,7 @@
 {
 	"name": "pl_staynest_copy",
 	"properties": {
-		"description": "Copies hotels.csv from the StayNest raw folder to the bronze folder in Azure Data Lake Storage Gen2.",
+		"description": "Copies hotels.csv from staynest/raw to staynest/bronze and lists the three raw files using Get Metadata.",
 		"activities": [
 			{
 				"name": "Copy_Hotels",
@@ -30,12 +30,13 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
@@ -60,6 +61,43 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "List_Raw_Files",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Copy_Hotels",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_raw_folder",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": false,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
 			}
 		],
 		"annotations": []
