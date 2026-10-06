@@ -46,7 +46,12 @@ Verified on 6 October 2026:
 
 ## Submission evidence
 
-Screenshots of the pipeline canvas, successful Debug run, metadata output, successful connection test, bronze folder, and Monitor results have been captured. Their upload to `screenshots/` is pending approval to publish the account and run identifiers visible in the images.
+Screenshots exclude personal account details and resource/run identifiers:
+
+- [Pipeline canvas](screenshots/01_pipeline_canvas.jpg)
+- [Successful activity runs in Monitor](screenshots/02_monitor_activities_success.jpg)
+- [Bronze hotels.csv output](screenshots/03_bronze_hotels.jpg)
+- [Get Metadata childItems output](screenshots/04_metadata_childitems.jpg)
 
 The `main` branch contains the authoring JSON under `factory/`, `linkedService/`, `dataset/`, and `pipeline/`. ADF generated deployment templates are on `adf_publish`. No storage keys or connection strings are included.
 
